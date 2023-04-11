@@ -1,1 +1,0 @@
-This is simply a script that executes builtin operating system commands to schedule keyboard clearing. It requires no external software.

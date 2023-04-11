@@ -10,8 +10,11 @@ echo yes or no
 goto begin
 
 :yes
+NET FILE 1>NUL 2>NUL
+if '%errorlevel%' == '0' ( goto primaryCommand )
 echo "You will be prompted to allow this program to run as admin, and it will re-launch. You may choose 'yes' again and proceed. Press enter to continue!
-REM NOTE: the following is a script to request administrator rights in order to set a background scheduled task that doesn't show a command window.
+REM NOTE the following is a script to request administrator rights in order to set a background scheduled task that doesn't show a command window.
+
 pause
 :init
  setlocal DisableDelayedExpansion
@@ -52,6 +55,7 @@ pause
  setlocal & cd /d %~dp0
  if '%1'=='ELEV' (del "%vbsGetPrivileges%" 1>nul 2>nul  &  shift /1)
 
+:primaryCommand
 goto inputFrequency
 
 :no
